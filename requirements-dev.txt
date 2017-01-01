@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jsonrpclib-pelix
 click
 colorama
@@ -6,3 +7,13 @@ pytest
 pytest-cov
 pytest-flakes
 ipython
+=======
+jsonrpclib-pelix
+click
+colorama
+mock
+pytest
+pytest-cov
+pytest-flakes
+ipython
+>>>>>>> refs/remotes/origin/python3
