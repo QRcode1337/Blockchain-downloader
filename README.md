@@ -8,7 +8,7 @@ Code used is modified versions of `jean.py` to download data from blockchain.inf
 
 ## Instructions
 
-- Install Python 2.7 and `pip`
+- Install Python 2 or 3 and `pip`
     - Windows: https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation
     - Linux: `$ sudo apt-get install python-pip`
 - During install when it asks for what modules to install, ensure that the last option "install to `PATH`" is enabled.
