@@ -95,7 +95,7 @@ def get_blockchain_rawaddr(address, limit=50, offset=0, silent=True, uri=BLOCKCH
             try:
                 dat = get_blockchain_rawaddr_json(address, limit=limit, offset=offset, uri=uri)
                 error = False
-            except urllib2.URLError, e:
+            except urllib2.URLError as e:
                 if not silent:
                     print('Error: Trying to open address {} from blockchain.info: '.format(address, e.reason))
         return json.loads(dat.read().decode())
