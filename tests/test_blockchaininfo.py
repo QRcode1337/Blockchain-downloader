@@ -6,7 +6,14 @@ from mock import patch, Mock
 
 import pytest
 
-import urllib.request, urllib.error, urllib.parse
+try:
+    # Python 3
+    Python3 = True
+    import urllib.request, urllib.error, urllib.parse
+except:
+    # Python 2
+    Python3 = False
+    import urllib2
 
 
 def test_make_blockchain_url():
@@ -35,8 +42,12 @@ def test_get_blockchain_rawaddr(mock_urlopen):
 def test_get_blockchain_rawaddr_urlerror(mock_urlopen):
     json = Mock()
     json.read.side_effect = ['{"key": "value"}', '{"key": "value"}']
-    mock_urlopen.side_effect = [urllib.error.URLError('Test Error'), json]
-    assert {'key': 'value'} == blockchaininfo.get_blockchain_rawaddr('1234567890abcdef', silent=False)
+    if Python3:
+        mock_urlopen.side_effect = [urllib.error.URLError('Test Error'), json]
+        assert {'key': 'value'} == blockchaininfo.get_blockchain_rawaddr('1234567890abcdef', silent=False)
+    else:
+        mock_urlopen.side_effect = [urllib2.URLError('Test Error'), json]
+        assert {'key': 'value'} == blockchaininfo.get_blockchain_rawaddr('1234567890abcdef', silent=False)
 
 
 def test_get_txs_from_blockchain_json():

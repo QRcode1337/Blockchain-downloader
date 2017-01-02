@@ -19,7 +19,7 @@ def read(filename, mode='r', buffering=-1, default=None, silent=True):
         with open(filename, mode, buffering) as f:
             data = f.read()
     except IOError as e:
-        print('Error: {}'.format(str(e)), file=sys.stderr)
+        print('Error: {}'.format(e), file=sys.stderr)
     return data
 
 
@@ -51,7 +51,7 @@ def write(filename, data, binary=True, mode='w', buffering=-1, silent=True, enco
                 f.write(data)
         except IOError as e:
             data = None
-            print('Error: {}'.format(str(e)), file=sys.stderr)
+            print('Error: {}'.format(e), file=sys.stderr)
         return data
     else:
         try:
@@ -59,7 +59,7 @@ def write(filename, data, binary=True, mode='w', buffering=-1, silent=True, enco
                 f.write(data.encode('utf8'))
         except IOError as e:
             data = None
-            print('Error: {}'.format(str(e)), file=sys.stderr)
+            print('Error: {}'.format(e), file=sys.stderr)
         return data
 
 

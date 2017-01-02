@@ -3,7 +3,11 @@
 
 from wlffbd import filesystem
 from mock import patch, mock_open
-from io import StringIO
+import sys
+if sys.version_info[0] < 3:
+    from StringIO import StringIO
+else:
+    from io import StringIO
 
 import pytest
 import platform
@@ -36,7 +40,8 @@ def test_readlines_fail(mock_stderr):
 @patch('wlffbd.filesystem.open')
 def test_write(mock_file):
     mock_file = mock_open()
-    assert 'Test string' == filesystem.write('<nofile>', 'Test string')
+    assert b'Test string' == filesystem.write('<nofile>', b'Test string'.encode('utf8'))
+    assert 'Test string' == filesystem.write('<nofile>', 'Test string', False)
 
 
 @patch('wlffbd.filesystem.sys.stderr', new_callable=StringIO)

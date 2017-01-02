@@ -22,7 +22,7 @@ except:
 try:
     import jsonrpclib
 except ImportError:
-    print('Fatal: jsonrpclib missing (Try `pip install -r requirements.txt`)')
+    print('Fatal: jsonrpclib-pelix missing (Try `pip install -r requirements.txt`)')
     sys.exit(-1)
 
 RPCUSER, RPCPASS = open('rpclogin.txt', 'r').read().split()

@@ -112,14 +112,24 @@ def get_tx_from_online(address, limit=50, sleep=1, callback=None):
     n_tx = data['n_tx']
     txlist = get_txs_from_blockchain_json(data)
 
-    while len(txlist) < n_tx:
-        if callback and isinstance(callback, collections.Callable):
-            callback(txlist, n_tx)
-        offset += 50
-        txlist.extend(get_txs_from_blockchain_json(get_blockchain_rawaddr(address, limit=limit, offset=offset, silent=True)))
-        # Lets be nice to blockchain.info
-        if sleep:
-            time.sleep(sleep)
+    if Python3:
+        while len(txlist) < n_tx:
+            if callback and isinstance(callback, collections.Callable):
+                callback(txlist, n_tx)
+            offset += 50
+            txlist.extend(get_txs_from_blockchain_json(get_blockchain_rawaddr(address, limit=limit, offset=offset, silent=True)))
+            # Lets be nice to blockchain.info
+            if sleep:
+                time.sleep(sleep)
+    else:
+        while len(txlist) < n_tx:
+            if callback and callable(callback):
+                callback(txlist, n_tx)
+            offset += 50
+            txlist.extend(get_txs_from_blockchain_json(get_blockchain_rawaddr(address, limit=limit, offset=offset, silent=True)))
+            # Lets be nice to blockchain.info
+            if sleep:
+                time.sleep(sleep)
 
     return txlist
 
