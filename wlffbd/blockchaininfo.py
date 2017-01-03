@@ -20,7 +20,10 @@ BLOCKCHAIN_URI = 'https://blockchain.info'
 
 
 def make_blockchain_url(path, uri=BLOCKCHAIN_URI, **kwargs):
-    '''Return a blockchain.info URL with the given path appended to the uri and urlencoded keyword arguments appended.'''
+    '''
+    Return a blockchain.info URL with the given path
+    appended to the uri and urlencoded keyword arguments appended.
+    '''
     if Python3:
         return '{}/{}?{}'.format(uri, path, urllib.parse.urlencode(kwargs))
     else:
@@ -28,7 +31,10 @@ def make_blockchain_url(path, uri=BLOCKCHAIN_URI, **kwargs):
 
 
 def get_blockchain_request(path, uri=BLOCKCHAIN_URI, **kwargs):
-    '''Return a response from urllib2.urlopen with the URL built by concatenating the uri, path, and urlencoded keyword arguments.'''
+    '''
+    Return a response from urllib2.urlopen with the URL built
+    by concatenating the uri, path, and urlencoded keyword arguments.
+    '''
     if Python3:
         return urllib.request.urlopen(make_blockchain_url(path, uri=uri, **kwargs))
     else:

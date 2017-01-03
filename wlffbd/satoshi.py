@@ -37,8 +37,11 @@ def rawdata_from_jsonrpc_rawtx(tx):
 
 def length_checksum_data_from_rawdata(rawdata):
     '''Returns the length, checksum, and data bytes from the given rawdata'''
-    length = struct.unpack('<L', rawdata[0:4])[0]
-    return length, struct.unpack('<L', rawdata[4:8])[0], rawdata[8:8+length]
+    try:
+        length = struct.unpack('<L', rawdata[0:4])[0]
+        return length, struct.unpack('<L', rawdata[4:8])[0], rawdata[8:8+length]
+    except struct.error as e:
+        return e, e, rawdata
 
 
 def length_byte(data):
