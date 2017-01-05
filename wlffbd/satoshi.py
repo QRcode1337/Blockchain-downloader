@@ -41,7 +41,8 @@ def length_checksum_data_from_rawdata(rawdata):
         length = struct.unpack('<L', rawdata[0:4])[0]
         return length, struct.unpack('<L', rawdata[4:8])[0], rawdata[8:8+length]
     except struct.error as e:
-        return e, e, rawdata
+        print(e)
+        return None, None, rawdata
 
 
 def length_byte(data):
@@ -77,8 +78,8 @@ def verify_rawdata(rawdata):
 ###
 
 
-def select_txins(value):
-    unspent = list(proxy.listunspent())
+def select_txins(value, SERVER=None):
+    unspent = list(SERVER.listunspent())
     random.shuffle(unspent)
 
     r = []

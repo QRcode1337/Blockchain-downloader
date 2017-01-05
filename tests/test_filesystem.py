@@ -48,6 +48,8 @@ def test_write(mock_file):
 def test_write_fail(mock_stderr):
     assert None == filesystem.write('', '')
     assert len(mock_stderr.getvalue())
+    assert None == filesystem.write('', '', False)
+    assert len(mock_stderr.getvalue())
 
 def test_newline():
     assert platform.system() == 'Windows' and '\r\n' or '\n' == filesystem.newline()

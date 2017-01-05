@@ -7,8 +7,9 @@ import time
 try:
     # Python 3
     Python3 = True
-    import urllib.request, urllib.parse, urllib.error
-    import urllib.request, urllib.error, urllib.parse
+    import urllib.request
+    import urllib.parse
+    import urllib.error
     import collections
 except:
     # Python 2
@@ -140,14 +141,14 @@ def get_tx_from_online(address, limit=50, sleep=1, callback=None):
     return txlist
 
 
-def get_data_online(transaction, Address):
+def get_data_online(transaction, Page):
     """
     Downloads the data from blockchain.info
     TODO: Change the data collection to json
     """
     hexdata = b''
     atoutput = False
-    for line in Address:
+    for line in Page:
         if b'Output Scripts' in line:
             atoutput = True
 
