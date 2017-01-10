@@ -50,7 +50,7 @@ class dlfn():
         if "Satoshi" in significanttx:
             self.save_file(data, self.FILENAME+"data.txt")
         self.save_file(indata, self.FILENAME+"indata.txt")     # saves the input script
-        self.save_file(data, self.FILENAME+"data.txt")         # saves binary data
+        # self.save_file(data, self.FILENAME+"data.txt")         # saves binary data
         self.save_file(origdata, self.FILENAME+"origdata.txt", True)         # saves all binary data
 
     def get_tx_list(self, tx_list, LOCAL):
