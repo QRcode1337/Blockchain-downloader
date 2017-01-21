@@ -88,11 +88,11 @@ def search_words(data):
     count = 0
     try:
         for char in data:
-            if ord(char) <= 127:
+            if ord(char) in range(20, 127):
                 count += 1
     except TypeError:
         for char in data:
-            if char <= 127:
+            if char in range(20, 127):
                 count += 1
     try:
         if(count/len(data)) >= 0.75:
