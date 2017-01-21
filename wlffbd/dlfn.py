@@ -6,7 +6,7 @@ from . import satoshi
 from . import blockchaininfo as online
 from . import blockchainrpc as rpc
 from .filesystem import read, readlines, write, newline
-from .search import search_hex, check_hash
+from .search import search_hex, check_hash, search_words
 
 from timeit import default_timer as timer
 
@@ -44,6 +44,10 @@ class dlfn():
         # significanttx += check_hash(inhex+hexdata, 'ripemd160')
         if self.checksum(origdata):
             significanttx += " Satoshi Checksum found"
+        if search_words(origdata):
+            significanttx += " ASCII letters found output"
+        if search_words(indata):
+            significanttx += " ASCII letters found input"
         if significanttx != '':
             print(transaction + " " + significanttx)
             self.save_file(transaction + " " + significanttx + newline(), "significant.txt", False)
