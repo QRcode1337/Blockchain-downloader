@@ -33,6 +33,7 @@ class dlfn():
         else:
             Page = online.get_blockchain_request('tx/{}'.format(transaction), show_adv='true')
             hexdata = online.get_data_online(transaction, Page)
+            Page = online.get_blockchain_request('tx/{}'.format(transaction), show_adv='true')
             inhex = online.get_indata_online(transaction, Page)
         _, _, data = satoshi.length_checksum_data_from_rawdata(satoshi.unhexutf8(hexdata))
         indata = satoshi.unhexutf8(inhex)

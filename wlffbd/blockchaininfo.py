@@ -174,7 +174,7 @@ def get_indata_online(transaction, Page):
     for line in Page:
 
         if b'Input Scripts' in line:
-            inoutput = False
+            inoutput = True
 
         if b'</table>' in line:
             inoutput = False
