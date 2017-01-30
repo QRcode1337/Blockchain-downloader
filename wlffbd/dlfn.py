@@ -47,7 +47,7 @@ class dlfn():
             significanttx += " Satoshi Checksum found"
         if search_words(origdata):
             significanttx += " ASCII letters found output"
-            print(origdata)
+            # print(origdata)
         if search_words(indata):
             significanttx += " ASCII letters found input"
         if significanttx != '':

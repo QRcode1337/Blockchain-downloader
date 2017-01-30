@@ -183,7 +183,6 @@ def get_indata_online(transaction, Page):
             if len(line) > 100:
                 chunks = line.split(b' ')
                 for c in chunks:
-                    print(c)
                     if b'O' not in c and b'\n' not in c and b'>' not in c and b'<' not in c:
                         inhex += c
 
