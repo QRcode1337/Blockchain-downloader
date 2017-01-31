@@ -159,7 +159,7 @@ def get_data_online(transaction, Page):
             if len(line) > 100:
                 chunks = line.split(b' ')
                 for c in chunks:
-                    if b'O' not in c and b'\n' not in c and b'>' not in c and b'<' not in c:
+                    if b'O' not in c and b'\n' not in c and b'>' not in c and b'<' not in c and b'j' not in c and b'\xef' not in c:
                         hexdata += c
     return hexdata.decode('utf8')
 
@@ -183,7 +183,7 @@ def get_indata_online(transaction, Page):
             if len(line) > 100:
                 chunks = line.split(b' ')
                 for c in chunks:
-                    if b'O' not in c and b'\n' not in c and b'>' not in c and b'<' not in c:
+                    if b'O' not in c and b'\n' not in c and b'>' not in c and b'<' not in c and b'j' not in c and b'\xef' not in c:
                         inhex += c
 
     return inhex.decode('utf8')
